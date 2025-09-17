@@ -1,0 +1,32 @@
+# General macOS/editor junk
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Dependency caches
+node_modules/
+**/node_modules/
+
+# Credentials and personal data
+configstore/
+gcloud/
+joplin-desktop/
+raycast/ai/
+
+# iTerm runtime files (keep curated profiles/scripts only)
+iterm2/sockets/
+iterm2/AppSupport/*
+!iterm2/AppSupport/DynamicProfiles/
+!iterm2/AppSupport/DynamicProfiles/**
+!iterm2/AppSupport/Scripts/
+!iterm2/AppSupport/Scripts/**
+iterm2/AppSupport/*.lock
+iterm2/AppSupport/iTermServer-*
+iterm2/AppSupport/log*.txt
+iterm2/AppSupport/parsers/
+iterm2/AppSupport/SavedState/
+iterm2/AppSupport/version.txt
+
+# Git metadata
+/.git
