@@ -30,3 +30,6 @@ iterm2/AppSupport/version.txt
 
 # Git metadata
 /.git
+
+# raycast
+raycast/

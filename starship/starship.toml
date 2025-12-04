@@ -1,17 +1,36 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# old format
+# format = """
+# [](red)\
+# $os\
+# $username\
+# [](bg:peach fg:red)\
+# $directory\
+# [](bg:yellow fg:peach)\
+# $git_branch\
+# $git_status\
+# [](fg:yellow bg:green)\
+# [](fg:green bg:sapphire)\
+# $conda\
+# [](fg:sapphire bg:lavender)\
+# $time\
+# [ ](fg:lavender)\
+# $cmd_duration\
+# $line_break\
+# $character"""
+
 format = """
-[](red)\
+[](lavender)\
 $os\
 $username\
-[](bg:peach fg:red)\
+[](bg:lavender fg:lavender)\
 $directory\
 [](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
 [](fg:yellow bg:green)\
 [](fg:green bg:sapphire)\
-$conda\
 [](fg:sapphire bg:lavender)\
 $time\
 [ ](fg:lavender)\
@@ -19,11 +38,13 @@ $cmd_duration\
 $line_break\
 $character"""
 
+
 palette = 'catppuccin_mocha'
 
 [os]
 disabled = false
-style = "bg:red fg:crust"
+# Changed bg: to lavender
+style = "bg:lavender fg:crust"
 
 [os.symbols]
 Windows = ""
@@ -40,8 +61,9 @@ Debian = "󰣚"
 
 [username]
 show_always = true
-style_user = "bg:red fg:crust"
-style_root = "bg:red fg:crust"
+# Changed bg:red to bg:lavender for style_user and style_root
+style_user = "bg:lavender fg:crust"
+style_root = "bg:lavender fg:crust"
 format = '[ $user]($style)'
 
 [directory]

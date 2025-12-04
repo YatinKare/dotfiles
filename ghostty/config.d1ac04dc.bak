@@ -1,0 +1,3 @@
+# Taken from catppuccin/ghostty github @ 09.17.2025
+theme = catppuccin-mocha.conf
+background-opacity = 0.9
