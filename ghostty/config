@@ -1,4 +1,5 @@
 # Taken from catppuccin/ghostty github @ 09.17.2025
-theme = catppuccin-mocha.conf
 background-opacity = 0.9
 keybind = shift+enter=text:\x1b\r
+macos-titlebar-style = hidden
+font-family = Isoveka Nerd Font

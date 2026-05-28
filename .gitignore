@@ -13,6 +13,31 @@ configstore/
 gcloud/
 joplin-desktop/
 raycast/ai/
+gh/hosts.yml
+github-copilot/apps.json
+github-copilot/versions.json
+**/access_tokens.db
+**/credentials.db
+
+# Local environment and runtime noise
+**/.envrc
+**/.env
+**/.env.*
+**/.nvimlog
+*.log
+
+# Local app state
+wireshark/recent
+wireshark/recent_common
+**/userstate.cbor
+**/.cagent_first_run
+sqlit/gcp_cache.json
+crush/
+goose/
+
+# Vendored upstream checkouts not curated for this repo
+sketchybar/sketchybar-app-font/
+ubersicht/widgets/simple-bar/
 
 # iTerm runtime files (keep curated profiles/scripts only)
 iterm2/sockets/

@@ -1,0 +1,50 @@
+function _G.get_oil_winbar()
+	local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+	local dir = require("oil").get_current_dir(bufnr)
+	if dir then
+		return vim.fn.fnamemodify(dir, ":~")
+	else
+		-- If there is no current directory (e.g. over ssh), just show the buffer name
+		return vim.api.nvim_buf_get_name(0)
+	end
+end
+
+require("mini.icons").setup()
+
+require("oil").setup({
+	columns = {
+		"icon",
+		"permissions",
+		"size",
+		"mtime",
+	},
+	delete_to_trash = true,
+	skip_confirm_for_simple_edits = true,
+	lsp_file_methods = {
+		-- Enable or disable LSP file operations
+		enabled = true,
+		-- Time to wait for LSP file operations to complete before skipping
+		timeout_ms = 1000,
+		-- Set to true to autosave buffers that are updated with LSP willRenameFiles
+		-- Set to "unmodified" to only save unmodified buffers
+		autosave_changes = true,
+	},
+	watch_for_changes = true,
+
+	-- keymaps = {
+	-- 	["<CR>"] = { callback = function()
+	--            require("oil.actions").select.callback()
+	--            vim.print(vim.bo.buftype)
+	--        end, desc = "", mode = "n" }
+	--    },
+
+	win_options = {
+		winbar = "%!v:lua.get_oil_winbar()",
+	},
+	view_options = {
+		show_hidden = true,
+		sort = {
+			{ "mtime", "desc" },
+		},
+	},
+})

@@ -2,7 +2,7 @@
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
 # https://github.com/FelixKratz/dotfiles
-
+#
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
@@ -60,7 +60,7 @@ sketchybar --default "${default[@]}"
 ##### Adding Aerospace Workspace Indicators #####
 sketchybar --add event aerospace_workspace_change
 
-for sid in $(aerospace list-workspaces --all); do
+for sid in $(aerospace list-workspaces --monitor all --empty no); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
@@ -102,6 +102,13 @@ sketchybar --add item clock right \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+##### Adding Center Items #####
+sketchybar --add item notchl q
+sketchybar --set notchl label=yatink
+
+# sketchybar --add alias "Control Center,WiFi" e
+#sketchybar --set notchr label="do smtg td"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

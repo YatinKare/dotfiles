@@ -22,10 +22,21 @@ after-startup-command = [
 # Start AeroSpace at login
 start-at-login = true
 
+
+
 # Notify Sketchybar about workspace change
 # exec-on-workspace-change = ['/bin/bash', '-c',
 #     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 # ]
+
+on-focus-changed = [
+  "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'",
+]
+exec-on-workspace-change = [
+  '/bin/zsh',
+  '-c',
+  '/usr/bin/osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\""',
+]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -56,6 +67,20 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
+# When connected to a external monitor
+# 1-5 will be for the main display
+# 6-9 are for the secondary display
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = ['secondary', 'main']
+7 = ['secondary', 'main']
+8 = ['secondary', 'main']
+9 = ['secondary', 'main']
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -73,7 +98,7 @@ inner.horizontal = 20
 inner.vertical =   20
 outer.left =       30
 outer.bottom =     25
-outer.top =        20
+outer.top =        [{ monitor."LG*" = 20 }, 50]
 outer.right =      25
 
 # 'main' binding mode declaration
@@ -207,6 +232,10 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
+# Toggle between floating-centered and tiling layout.
+## Floating-centered needs to depend on Raycast Window Management Center Command hotkey.
+## My Raycast window management Center Command hotke; is set to `ctrl + option + cmd + f2`. (`Key Code 120` = F2)
+period = ['''exec-and-forget ~/.config/aerospace/open-macvim-centered.sh''', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
